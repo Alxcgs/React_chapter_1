@@ -1,0 +1,124 @@
+/* Центрування контенту */
+#root {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Основний заголовок */
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Форма додавання нового завдання */
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+  margin-right: 0.5rem;
+}
+
+/* Сірий фон для кнопок за замовчуванням з !important */
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #a3a418 !important; /* Сірий фон */
+  color: rgb(255, 255, 255) !important;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Кнопка Add (зелена при наведенні) */
+button.add-btn {
+  background-color: #000000 !important; /* Сірий фон за замовчуванням */
+}
+
+button.add-btn:hover {
+  background-color: #4CAF50 !important; /* Зелений при наведенні */
+  color: #000000 !important;
+}
+
+button.delete-btn {
+  background-color: #000000 !important; /* Сірий фон за замовчуванням */
+}
+
+/* Кнопка Delete (червона при наведенні) */
+button.delete-btn:hover {
+  background-color: #dc3545 !important; /* Червоний при наведенні */
+  color: #000000 !important;
+}
+
+button.edit-btn {
+  background-color: #000000 !important; /* Сірий фон за замовчуванням */
+}
+
+/* Кнопка Edit (синя при наведенні) */
+button.edit-btn:hover {
+  background-color: #007bff !important; /* Синій при наведенні */
+  color: #000000 !important;
+}
+
+/* Пошукове поле */
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Таблиця завдань */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+td {
+  font-size: 1rem;
+  color: #333;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Загальний стиль */
+body {
+  background-color: #e4e4e4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
