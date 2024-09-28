@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SearchInput from "./SearchInput";
 import AddToDoComponent from "./AddToDoComponent";
 import ToDoTable from "./ToDoTable";
+import useGetAllToDo from '../hooks/UseGetAllToDo';
 
 const ToDoContainer = () => {
-  const [toDos, setToDos] = useState([]); // Список завдань
+  const { isLoading, data, setData, error } = useGetAllToDo(); // Використання хука для отримання даних
   const [title, setTitle] = useState(""); // Заголовок нового завдання
   const [searchQuery, setSearchQuery] = useState(""); // Пошуковий запит
+
+  useEffect(() => {
+    // Якщо дані успішно завантажились, встановлюємо їх у стан
+    if (data) {
+      setData(data.slice(0, 10)); // Наприклад, беремо перші 10 завдань
+    }
+  }, [data]);
 
   // Обробник зміни заголовка нового завдання
   const handleTitleChange = (e) => {
@@ -20,14 +28,14 @@ const ToDoContainer = () => {
       id: Date.now(), // Унікальний ID
       title,
     };
-    setToDos([...toDos, newToDo]); // Додаємо нове завдання до списку
+    setData([...data, newToDo]); // Додаємо нове завдання до списку
     setTitle(""); // Очищуємо поле вводу після додавання
   };
 
   // Оновлення завдання
   const updateTodo = (id, newTitle) => {
-    setToDos(
-      toDos.map((toDo) =>
+    setData(
+      data.map((toDo) =>
         toDo.id === id ? { ...toDo, title: newTitle } : toDo
       )
     );
@@ -35,13 +43,21 @@ const ToDoContainer = () => {
 
   // Видалення завдання
   const deleteTodo = (id) => {
-    setToDos(toDos.filter((toDo) => toDo.id !== id));
+    setData(data.filter((toDo) => toDo.id !== id));
   };
 
   // Пошук завдань за заголовком
-  const filteredToDos = toDos.filter((toDo) =>
+  const filteredToDos = data.filter((toDo) =>
     toDo.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  if (isLoading) {
+    return <p>Завантаження...</p>; // Можна додати індикатор завантаження
+  }
+
+  if (error) {
+    return <p>Сталася помилка: {error.message}</p>; // Виведення помилки, якщо є
+  }
 
   return (
     <div>
