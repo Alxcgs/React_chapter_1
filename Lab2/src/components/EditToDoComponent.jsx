@@ -4,7 +4,7 @@ const EditToDoComponent = ({ initialTitle, onSave }) => {
   const [editTitle, setEditTitle] = useState(initialTitle);
 
   const handleSave = () => {
-    onSave(editTitle); // Передаємо новий заголовок завдання
+    onSave(editTitle);
   };
 
   return (

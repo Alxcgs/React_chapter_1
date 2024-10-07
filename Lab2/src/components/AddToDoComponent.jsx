@@ -3,8 +3,8 @@ import React from "react";
 const AddToDOComponent = ({ title, onTitleChange, onSubmit }) => {
   return (
     <form onSubmit={(e) => {
-      e.preventDefault(); // Запобігає перезавантаженню сторінки
-      onSubmit(); // Виклик функції додавання нового завдання
+      e.preventDefault();
+      onSubmit();
     }}>
       <input
         type="text"
